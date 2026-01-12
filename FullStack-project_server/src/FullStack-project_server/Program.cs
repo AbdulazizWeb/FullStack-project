@@ -42,6 +42,20 @@ builder.Services.AddSwaggerGen(s =>
     });
 });
 
+var corsOrigins = builder.Configuration
+    .GetSection("Cors:Origins")
+    .Get<string[]>() ?? [];
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("FrontendPolicy", policy =>
+    {
+        policy.WithOrigins(corsOrigins)
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
+
 var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
@@ -64,5 +78,5 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.MapControllers();
-
+app.UseCors("FrontendPolicy");
 app.Run();
