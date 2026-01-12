@@ -21,11 +21,4 @@
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0"/>
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Application\DTOs\" />
-      <Folder Include="Application\UseCases\Auth\Queries\" />
-      <Folder Include="Application\UseCases\User\Commands\" />
-      <Folder Include="Application\UseCases\User\Queries\" />
-    </ItemGroup>
-
 </Project>

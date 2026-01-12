@@ -1,4 +1,4 @@
-using FullStack_project_server.Application.UseCases.Auth.Commands;
+using FullStack_project_server.Application.UseCases.AuthCases.Commands;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,7 +11,6 @@ public class AuthController(IMediator mediator) : ControllerBase
     private readonly IMediator _mediator = mediator;
 
     [HttpPost("login")]
-    // GET
     public async Task<IActionResult> Login(LoginCommand command)
     {
         var token = await _mediator.Send(command);

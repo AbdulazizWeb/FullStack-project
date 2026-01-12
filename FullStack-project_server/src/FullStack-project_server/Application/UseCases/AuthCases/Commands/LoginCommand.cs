@@ -2,13 +2,10 @@ using FullStack_project_server.Application.Abstractions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace FullStack_project_server.Application.UseCases.Auth.Commands;
+namespace FullStack_project_server.Application.UseCases.AuthCases.Commands;
 
-public sealed class LoginCommand : IRequest<string>
-{
-    public string Email { get; set; } = null!;
-    public string Password { get; set; } = null!;
-}
+public sealed record LoginCommand(string Email, string Password) : IRequest<string>;
+
 
 public class LoginCommandHandler(IApplicationDbContext db, ITokenService tokenService, IHashService hashService) 
     : IRequestHandler<LoginCommand, string>

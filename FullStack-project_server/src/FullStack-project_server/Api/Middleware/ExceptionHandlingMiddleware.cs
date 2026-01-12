@@ -1,5 +1,5 @@
 using System.Text.Json;
-using FullStack_project_server.Application.Exceptions;
+using FullStack_project_server.Application.Common.Exceptions;
 using ValidationException = System.ComponentModel.DataAnnotations.ValidationException;
 
 namespace FullStack_project_server.Api.Middleware;
@@ -40,7 +40,7 @@ public class ExceptionHandlingMiddleware(RequestDelegate next, ILogger<Exception
             context.Response.StatusCode = StatusCodes.Status404NotFound;
             await WriteJson(context, new { message = ex.Message });
         }
-        catch (Exception ex)
+        catch (AppException ex)
         {
             _logger.LogError(ex, "Unhandled exception");
             context.Response.StatusCode = StatusCodes.Status500InternalServerError;
