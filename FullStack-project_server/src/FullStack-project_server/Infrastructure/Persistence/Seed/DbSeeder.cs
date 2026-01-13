@@ -24,7 +24,7 @@ public static class DbSeeder
                 Email = adminEmail,
                 FirstName = "Admin",
                 LastName = "User",
-                PasswordHash = BCrypt.Net.BCrypt.HashPassword("admin"),
+                PasswordHash = BCrypt.Net.BCrypt.HashPassword("Admin_777"),
             };
             
             context.Users.Add(adminUser);
