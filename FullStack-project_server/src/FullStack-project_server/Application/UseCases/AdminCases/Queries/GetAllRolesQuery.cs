@@ -14,7 +14,7 @@ public class GetAllRolesQueryHandler(IApplicationDbContext context, IHashService
     private readonly ICurrentUserService _currentUser = currentUser;
     public async Task<List<Role>> Handle(GetAllRolesQuery request, CancellationToken cancellationToken)
     {
-        var roles = await _context.Roles.AsNoTracking().ToListAsync(cancellationToken);
+        var roles = await _context.Roles.Where(x => x.Name != "ADMIN").AsNoTracking().ToListAsync(cancellationToken);
         return roles;
     }
 }
