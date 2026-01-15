@@ -1,10 +1,12 @@
 import { Login } from "@/features/auth/login";
+import bg from "@/shared/assets/bg.jpeg";
+import bgRight from "@/shared/assets/loginBg.avif";
 
 export const LoginPage = () => {
   return (
     <div className="min-h-screen w-full grid grid-cols-1 lg:grid-cols-2">
       <div
-        style={{ backgroundImage: "url(/src/shared/assets/bg.jpeg)" }}
+        style={{ backgroundImage: `url(${bg})` }}
         className=" bg-cover relative hidden lg:block"
       >
         <div className="absolute w-full h-full bg-[#00335d75]"></div>
@@ -12,7 +14,7 @@ export const LoginPage = () => {
       <div
         className="flex  bg-white justify-center items-center"
         style={{
-          backgroundImage: "url(/src/shared/assets/loginBg.avif)",
+          backgroundImage: `url(${bgRight})`,
           backgroundSize: "cover",
         }}
       >
