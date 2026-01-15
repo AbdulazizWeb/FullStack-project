@@ -7,5 +7,5 @@ public record UserDto(
     string FirstName,
     string LastName,
     string Email,
-    List<Guid> RoleIds
+    List<Role> Roles
 );
