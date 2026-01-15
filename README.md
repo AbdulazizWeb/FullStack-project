@@ -2,7 +2,8 @@
 
 Ushbu loyiha foydalanuvchilar va rollarni boshqarish, JWT asosidagi autentifikatsiya va avtorizatsiyani qo‘llab-quvvatlaydigan **fullstack web-ilova** hisoblanadi.
 
-Loyiha **Backend (ASP.NET Core + PostgreSQL)** va **Frontend (React + Ant Design)** qismlaridan iborat.
+Loyiha **Backend (ASP.NET Core + PostgreSQL)** va  
+**Frontend (React + Ant Design)** qismlaridan iborat.
 
 ---
 
@@ -28,9 +29,27 @@ Loyiha **Backend (ASP.NET Core + PostgreSQL)** va **Frontend (React + Ant Design
 
 ## Loyiha ishga tushirish bo‘yicha talablar
 
-Loyihaning server qismi hozir Render.com serverida turibdi va siz frontend qismini istalgan IDE orqali ochib unda 1.  ```npm install``` va 2. ```npm run dev``` qilish orqali client qismni ishga tushirasiz. Kerakli sozlamalar barchasi sozlangan va frontend qismi serverdagi backendga ulanadi.
-  Loyihaga kirish uchun:
-    Email: admin@gmail.com
-    Password: Admin_777
-kiritishingiz kifoya va siz Admin akkauntiga kirasiz.
+### Backend
 
+Backend qismi hozirda **Render.com** serverida joylashtirilgan va production holatda ishlamoqda.  
+Qo‘shimcha sozlamalar talab qilinmaydi.
+
+---
+
+### Frontend
+
+Frontend qismini ishga tushirish uchun quyidagi amallarni bajaring:
+
+1. Loyihani istalgan IDE (masalan, VS Code) orqali oching  
+2. Dependency’larni o‘rnating:
+   ```bash
+   npm install
+3. Frontendni ishga tushuring
+   ```bash
+   npm run dev
+
+Ishga tushurishingiz bilan frontend darxol render.com dagi serverga ulanadi va loginga kirasiz.
+
+Admin Akkaunt:
+  - Email: admin@gmail.com
+  - Password: Admin_777
