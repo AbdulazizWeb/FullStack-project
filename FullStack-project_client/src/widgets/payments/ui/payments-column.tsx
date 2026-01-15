@@ -7,17 +7,21 @@ export const columns: TableProps<PaymentType>["columns"] = [
     title: "ID",
     dataIndex: "id",
     key: "id",
-    render: (text) => <a>{text}</a>,
+    render: (text) => <a>{text.slice(0, 8)}</a>,
+    width: 100,
+    fixed: "left",
   },
   {
     title: "Amount",
     dataIndex: "amount",
     key: "amount",
+    width: 250,
   },
   {
     title: "Currency",
     dataIndex: "currency",
     key: "currency",
+    width: 250,
   },
   {
     title: "Status",
@@ -30,5 +34,6 @@ export const columns: TableProps<PaymentType>["columns"] = [
         </Tag>
       </Flex>
     ),
+    width: 250,
   },
 ];
