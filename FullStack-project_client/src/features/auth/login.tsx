@@ -1,6 +1,7 @@
 import { useLoginMutation } from "@/entities/auth/api/auth.api";
 import { loginSuccess } from "@/entities/auth/model/auth.slice";
-import { Button, Card, Form, Input, message } from "antd";
+import { messageApi } from "@/shared/ui/message-provider";
+import { Button, Card, Form, Input } from "antd";
 import { Controller, useForm, type SubmitHandler } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
@@ -16,7 +17,6 @@ export const Login = () => {
 
   const [loginUser, { isLoading }] = useLoginMutation();
 
-  const [messageApi, contextHolder] = message.useMessage();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -31,17 +31,16 @@ export const Login = () => {
         content: "Login successful!",
       });
       navigate("/", { replace: true });
-    } catch (error) {
-      messageApi.open({
-        type: "error",
-        content: error,
-      });
+    } catch {
+      messageApi.error("Error");
     }
   };
 
   return (
-    <Card className="px-10 w-120 shadow" title="Log in">
-      {contextHolder}
+    <Card
+      className="px-10 min-w-80 w-120  shadow-lg shadow-[#c1c1c1]"
+      title="Log in"
+    >
       <Form
         style={{ maxWidth: 600 }}
         layout="vertical"
@@ -89,10 +88,10 @@ export const Login = () => {
           type="primary"
           htmlType="submit"
           className="w-full mt-8"
-          disabled={isLoading}
+          loading={isLoading}
           size="large"
         >
-          Log in
+          {isLoading ? "Logging in..." : "Log in"}
         </Button>
       </Form>
     </Card>

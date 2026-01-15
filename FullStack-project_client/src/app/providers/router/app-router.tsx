@@ -13,6 +13,7 @@ import {
 import { UsersPage } from "@/pages/admin-panel";
 import { PaymentsPage } from "@/pages/payments/payments-page";
 import { ReportsPage } from "@/pages/reports/reports-page";
+import { ForbiddenPage } from "@/pages/errors/forbidden-page";
 
 export const AppRouter = () => {
   return (
@@ -39,6 +40,7 @@ export const AppRouter = () => {
           </Route>
         </Route>
 
+        <Route path="/forbidden" element={<ForbiddenPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>

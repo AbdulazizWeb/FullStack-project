@@ -1,36 +1,48 @@
 import type { UserType } from "@/entities/user/model/types";
-import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
-import { Flex, Space, Tag } from "antd";
+import { Flex, Tag } from "antd";
 import type { TableProps } from "antd";
+import { ActionButtons } from "./action-buttons";
 
-export const columns: TableProps<UserType>["columns"] = [
+export const columns = (
+  setIsModalOpen: (open: boolean) => void,
+  setMode: (mode: "create" | "edit") => void,
+  setSelectedUser: (selectedUser: UserType) => void
+): TableProps<UserType>["columns"] => [
   {
-    title: "Name",
-    dataIndex: "name",
-    key: "name",
-    render: (text) => <a>{text}</a>,
+    title: "ID",
+    dataIndex: "id",
+    key: "id",
+    render: (text) => <a>{text.slice(0, 8)}</a>,
+    width: 100,
+    fixed: "left",
   },
   {
-    title: "Age",
-    dataIndex: "age",
-    key: "age",
+    title: "First name",
+    dataIndex: "firstName",
+    key: "firstName",
+    width: 250,
   },
   {
-    title: "Address",
-    dataIndex: "address",
-    key: "address",
+    title: "Last name",
+    dataIndex: "lastName",
+    key: "lastName",
+    width: 250,
+  },
+  {
+    title: "Email",
+    dataIndex: "email",
+    key: "email",
+    width: 250,
   },
   {
     title: "Roles",
-    key: "roles",
-    dataIndex: "roles",
+    key: "roleIds",
+    dataIndex: "roleIds",
     render: (_, { roles }) => (
       <Flex gap="small" align="center" wrap>
         {roles.map((role) => {
           const color = "green";
-          //   if (role === "loser") {
-          //     color = "volcano";
-          //   }
+
           return (
             <Tag color={color} key={role.id}>
               {role.name.toUpperCase()}
@@ -39,19 +51,20 @@ export const columns: TableProps<UserType>["columns"] = [
         })}
       </Flex>
     ),
+    width: 300,
   },
   {
     title: "Action",
     key: "action",
-    render: () => (
-      <Space size="middle">
-        <a>
-          <EditOutlined />
-        </a>
-        <a>
-          <DeleteOutlined />
-        </a>
-      </Space>
+    render: (_, user) => (
+      <ActionButtons
+        setIsModalOpen={setIsModalOpen}
+        user={user}
+        setMode={setMode}
+        setSelectedUser={setSelectedUser}
+      />
     ),
+    width: 220,
+    fixed: "right",
   },
 ];
